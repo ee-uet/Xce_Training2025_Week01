@@ -1,0 +1,5 @@
+2022-10-01 user1 login
+2022-10-02 user2 logout
+2022-10-03 user1 update
+2022-10-04 user3 login
+2022-10-05 user2 update
