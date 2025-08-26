@@ -1,0 +1,441 @@
+//////////////////////////////////////////  Lab#02 ///////////////////////////////////////////////////////
+// Author: [Your Name]
+// Description: This program demonstrates different concepts of C programming such as pointers,
+// strings, macros, file I/O, linked list operations, dynamic memory allocation, and Booth multiplier.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+///////////////////////////////////////////// Task#01 ///////////////////////////////////////////////////
+// Pointer basics, swapping, and array manipulation
+
+//////////////////// Task#1.1: Pointer demonstration ////////////////////
+void task1_1() {
+    int x = 10;           // Variable x declared and initialized
+    int *ptr = &x;        // Pointer initialized with address of x
+
+    // Printing x using direct and indirect access
+    printf("Direct : %d\nIndirect : %d\n", x, *ptr);
+
+    // Modifying x through pointer
+    *ptr = 40;
+
+    // Printing modified value of x
+    printf("Modified : %d\n", *ptr);
+}
+
+//////////////////// Task#1.2: Swap using pointers ////////////////////
+void swap(int *x, int *y) {
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+//////////////////// Task#1.3: Array operations using pointers ////////////////////
+void task1_3() {
+    int size;
+    printf("Enter size of an array you want to print: ");
+    scanf("%d", &size);
+
+    int arr[size];
+    printf("Please enter %d elements in array:\n", size);
+
+    // Input elements
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int *ptr = arr;
+
+    // Printing array using pointer arithmetic
+    printf("You entered these integers in array:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", *(ptr + i));
+    }
+    printf("\n");
+
+    // Computing sum
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += *(ptr + i);
+    }
+    printf("Sum of all elements of array: %d\n", sum);
+
+    // Printing reverse order
+    printf("Array in reverse order:\n");
+    for (int i = size - 1; i >= 0; i--) {
+        printf("%d ", *(ptr + i));
+    }
+    printf("\n");
+}
+
+///////////////////////////////////////////// Task#02 ///////////////////////////////////////////////////
+// String operations using pointers
+
+//////////////////// Task#2.1a: String length ////////////////////
+void strlength() {
+    char arr[] = "Hello";
+    char *ptr = arr;
+    int len = 0;
+
+    while (*(ptr + len) != '\0') {
+        len++;
+    }
+    printf("Length of string is: %d\n", len);
+}
+
+//////////////////// Task#2.1b: String copy ////////////////////
+void strcopy() {
+    char a1[] = "Hello";
+    char a2[50];
+    char *ptr = a1;
+    int i = 0;
+
+    while (*(ptr + i) != '\0') {
+        a2[i] = *(ptr + i);
+        i++;
+    }
+    a2[i] = '\0'; // Null-terminate
+    printf("Copied string: %s\n", a2);
+}
+
+//////////////////// Task#2.1c: String compare (matched/unmatched) ////////////////////
+void strcompare() {
+    char a1[] = "Hello";
+    char a2[] = "Helww";
+    char matched[50] = {0};
+    char unmatched[50] = {0};
+    int i = 0, m = 0, u = 0;
+
+    while (a1[i] != '\0' && a2[i] != '\0') {
+        if (a1[i] == a2[i]) {
+            matched[m++] = a1[i];
+        } else {
+            unmatched[u++] = a1[i];
+        }
+        i++;
+    }
+    printf("Matched part: %s\n", matched);
+    printf("Unmatched part: %s\n", unmatched);
+}
+
+//////////////////// Task#2.2: Check palindrome ////////////////////
+void is_palindrome() {
+    char str[] = "MONDAY";
+    char forward[50], reverse[50];
+    int len = strlen(str);
+
+    // Copy forward
+    strcpy(forward, str);
+
+    // Reverse
+    for (int i = 0; i < len; i++) {
+        reverse[i] = str[len - 1 - i];
+    }
+    reverse[len] = '\0';
+
+    printf("Forward: %s\n", forward);
+    printf("Reverse: %s\n", reverse);
+
+    if (strcmp(forward, reverse) == 0)
+        printf("Yes, string is palindrome\n");
+    else
+        printf("Not palindrome\n");
+}
+
+///////////////////////////////////////////// Task#03 ///////////////////////////////////////////////////
+// Macros and File I/O
+
+//////////////////// Task#3.1: Macros ////////////////////
+#define SQUARE(X) ((X) * (X))
+#define MAX2(a, b) (((a) > (b)) ? (a) : (b))
+#define MAX3(a, b, c) (MAX2(MAX2(a, b), c))
+#define MAX4(a, b, c, d) (MAX2(MAX3(a, b, c), d))
+#define TO_UPPER(c) ((c) - 'a' + 'A')
+
+void macros() {
+    printf("%d\n", SQUARE(4));
+    printf("%d\n", MAX2(3, 4));
+    printf("%d\n", MAX3(100, 34, 8));
+    printf("%d\n", MAX4(2, 499, 899, 0));
+    printf("%c\n", TO_UPPER('f'));
+}
+
+//////////////////// Task#3.2: File I/O with structures ////////////////////
+void fileio() {
+    struct student {
+        char name[1000];
+        int roll;
+        float gpa;
+    };
+
+    int n;
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    struct student students_data[n];
+
+    // Input student data
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter data for student %d\n", i + 1);
+        printf("Roll no: ");
+        scanf("%d", &students_data[i].roll);
+        printf("Name: ");
+        scanf("%s", students_data[i].name);
+        printf("GPA: ");
+        scanf("%f", &students_data[i].gpa);
+    }
+
+    // Find highest GPA
+    float h_gpa = 0.0;
+    char h_gpa_stu[1000];
+    for (int i = 0; i < n; i++) {
+        if (students_data[i].gpa > h_gpa) {
+            h_gpa = students_data[i].gpa;
+            strcpy(h_gpa_stu, students_data[i].name);
+        }
+    }
+    printf("\nHighest GPA: %.2f by %s\n", h_gpa, h_gpa_stu);
+
+    // Write to file
+    FILE *ptr = fopen("students.txt", "w");
+    for (int i = 0; i < n; i++) {
+        fprintf(ptr, "%s\n", students_data[i].name);
+    }
+    fclose(ptr);
+
+    // Read from file
+    FILE *ptr1 = fopen("students.txt", "r");
+    char ch[60];
+    printf("\nNames read from file:\n");
+    while (fscanf(ptr1, "%s", ch) != EOF) {
+        printf("%s\n", ch);
+    }
+    fclose(ptr1);
+}
+
+///////////////////////////////////////////// Task#04 ///////////////////////////////////////////////////
+// Linked List Operations
+
+void linklist_operations() {
+    struct Node {
+        int data;
+        struct Node *next;
+    };
+
+    // Create nodes dynamically
+    struct Node *n1 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *n2 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *n3 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *newnode = (struct Node *)malloc(sizeof(struct Node));
+
+    // Assign data
+    newnode->data = 15;
+    n1->data = 23;
+    n2->data = 12;
+    n3->data = 14;
+
+    // Linking nodes
+    newnode->next = n1;
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = NULL;
+
+    struct Node *head = newnode;
+
+    // Delete node with key = 12
+    int key = 12;
+    struct Node *temp = head;
+    struct Node *prev = NULL;
+
+    if (temp != NULL && temp->data == key) {
+        head = temp->next;
+        free(temp);
+    } else {
+        while (temp != NULL && temp->data != key) {
+            prev = temp;
+            temp = temp->next;
+        }
+        if (temp != NULL) {
+            prev->next = temp->next;
+            free(temp);
+        }
+    }
+
+    // Print remaining list
+    temp = head;
+    printf("Linked list after deletion: ");
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+
+    // Free memory
+    free(newnode);
+    free(n1);
+    free(n3);
+}
+
+///////////////////////////////////////////// Task#05 ///////////////////////////////////////////////////
+// Dynamic Memory Allocation
+
+void dynamic_mem() {
+    int n;
+    printf("Enter number of slots: ");
+    scanf("%d", &n);
+
+    int *arr = (int *)malloc(n * sizeof(int));
+    printf("Enter integers:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Print array
+    printf("Array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // Calculate sum and average
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+    printf("Sum: %d\n", sum);
+    printf("Average: %.2f\n", (float)sum / n);
+
+    free(arr);
+}
+
+void realloc_use() {
+    int n;
+    printf("Enter old size: ");
+    scanf("%d", &n);
+
+    int *arr = (int *)malloc(n * sizeof(int));
+    printf("Enter elements:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int m;
+    printf("Enter new size: ");
+    scanf("%d", &m);
+    arr = (int *)realloc(arr, m * sizeof(int));
+
+    printf("Enter new elements:\n");
+    for (int i = 0; i < m; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Extended array: ");
+    for (int i = 0; i < m; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    free(arr);
+}
+
+void mem_free_detector() {
+    int *ptr = (int *)malloc(5 * sizeof(int));
+    if (ptr == NULL) {
+        printf("Memory not allocated\n");
+    } else {
+        printf("Memory allocated\n");
+    }
+
+    for (int i = 0; i < 5; i++) {
+        printf("%p\n", (ptr + i));
+    }
+
+    free(ptr);
+    ptr = NULL;
+
+    if (ptr == NULL)
+        printf("Memory freed successfully\n");
+    else
+        printf("Memory not freed\n");
+}
+
+///////////////////////////////////////////// Project: Booth Multiplier //////////////////////////////////
+void booth_multiplier() {
+    int n;
+    printf("Enter bit length: ");
+    scanf("%d", &n);
+
+    int A[n], Q[n], M[n], M_2scomp[n];
+    printf("Enter Multiplier (Q): ");
+    for (int i = 0; i < n; i++) scanf("%d", &Q[i]);
+
+    printf("Enter Multiplicand (M): ");
+    for (int i = 0; i < n; i++) scanf("%d", &M[i]);
+
+    printf("Enter 2's complement of M (~M): ");
+    for (int i = 0; i < n; i++) scanf("%d", &M_2scomp[i]);
+
+    for (int i = 0; i < n; i++) A[i] = 0;
+
+    int Q_ff = 0;
+
+    for (int step = 0; step < n; step++) {
+        if ((Q[n - 1] == 0 && Q_ff == 0) || (Q[n - 1] == 1 && Q_ff == 1)) {
+            // Do nothing, just shift
+        } else if (Q[n - 1] == 1 && Q_ff == 0) {
+            // A = A - M
+            int carry = 0;
+            for (int i = n - 1; i >= 0; i--) {
+                int temp = A[i] + M_2scomp[i] + carry;
+                A[i] = temp % 2;
+                carry = temp / 2;
+            }
+        } else if (Q[n - 1] == 0 && Q_ff == 1) {
+            // A = A + M
+            int carry = 0;
+            for (int i = n - 1; i >= 0; i--) {
+                int temp = A[i] + M[i] + carry;
+                A[i] = temp % 2;
+                carry = temp / 2;
+            }
+        }
+
+        // Arithmetic right shift
+        Q_ff = Q[n - 1];
+        for (int j = n - 1; j > 0; j--) Q[j] = Q[j - 1];
+        Q[0] = A[n - 1];
+        for (int j = n - 1; j > 0; j--) A[j] = A[j - 1];
+    }
+
+    printf("Result: ");
+    for (int i = 0; i < n; i++) printf("%d", A[i]);
+    for (int i = 0; i < n; i++) printf("%d", Q[i]);
+    printf("\n");
+}
+
+///////////////////////////////////////////// Main Function /////////////////////////////////////////////
+int main() {
+    task1_1();
+    int x = 10, y = 20;
+    swap(&x, &y);
+    printf("Swapped: x=%d, y=%d\n", x, y);
+    task1_3();
+    strlength();
+    strcopy();
+    strcompare();
+    is_palindrome();
+    macros();
+    fileio();
+    linklist_operations();
+    dynamic_mem();
+    realloc_use();
+    mem_free_detector();
+    booth_multiplier();
+    return 0;
+}
+
+///////////////////////////////////////////// END OF LAB#02 /////////////////////////////////////////////
