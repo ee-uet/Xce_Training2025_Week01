@@ -1,14 +1,19 @@
-all: main
+# Compiler
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+DEBUGFLAGS = -g
+TARGET = main
+SRCS = main.c function.c
+OBJS = $(SRCS:.c=.o)
+DEPS = $(SRCS:.c=.d)
 
-main: main.o function.o
-	gcc main.o function.o -o main
-
-main.o: main.c
-	gcc -c main.c -o main.o
-
-function.o: function.c
-	gcc -c function.c -o function.o
-
+all: $(TARGET)
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
+%.o: %.c
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
+debug: CFLAGS += $(DEBUGFLAGS)
+debug: clean $(TARGET)
 clean:
-	rm -f main function.o main.o
-
+	rm -f $(TARGET) $(OBJS) $(DEPS)
+-include $(DEPS)
