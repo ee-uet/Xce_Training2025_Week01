@@ -1,0 +1,5 @@
+Student[0].name=Ali ,roll no.1, GPA:3.50
+Student[1].name=Ahmad ,roll no.2, GPA:3.40
+Student[2].name=Umer ,roll no.3, GPA:3.30
+Student[3].name=Abdullah ,roll no.4, GPA:3.80
+Student[4].name=Usman ,roll no.5, GPA:3.10
