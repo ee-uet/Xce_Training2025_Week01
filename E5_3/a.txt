@@ -1,0 +1,42 @@
+
+shell_files = $(wildcard *.sh)
+install_dir = /home/hafiz/Documents/X_training/Bash/E5_3
+SHELL_CHECK = shellcheck
+
+all: check
+
+check:
+	for script in $(shell_files); do \
+		if [ -f $$script ]; then \
+			echo "Check $$script file syntax " \
+			$(SHELL_CHECK) $$script || exit 1 \
+		else \
+			echo "This $$script file does not exit" \
+		fi \
+	done 
+
+	echo "Check syntax of all files"
+
+test:
+	if [ -d Tests ]; then \
+		echo "Run Tests" \
+		for testt in Tests/*.sh; do \
+			echo "Run this test $$testt" \
+			bash $$testt || exit 1 \
+		done \
+	else \
+		echo "Directory does not exist" \
+	fi \
+	echo "Run all tests successfully"
+
+install:
+	for script in $(shell_files); do \
+		if [ -f $$script ]; then \
+			echo "Install file to this path $(install_dir)" \
+			install -m 755 $$script $(install_dir) \
+		else \
+			echo "File not exist" \
+		fi \
+	done 
+
+
