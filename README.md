@@ -1,108 +1,71 @@
-# Week-01 Labs: Productivity Tools & C Fundamentals
+# Week-01 Labs: Productivity Tools & C Fundamentals  
 
-Welcome to **Week-01 Labs**  
-This repository is for submitting your deliverables for **Week-01** of the Digital Design Training Program.  
-
-During this week, you explored **C programming, Linux productivity tools, Git workflows, and RISC-V basics**.  
-This repo will collect your lab assignments, scripts, and code implementations.  
+## ✅ Overview  
+This repository contains my **completed submissions** for **Week-01** of the Digital Design Training Program.  
+The tasks include **C programming, advanced memory management, Linux shell scripting, Makefile automation, Git workflows, and RISC-V ISA basics with Spike simulator**.  
 
 ---
 
-## Topics Covered in Week-01
-
-### **Day 01: C Language Refresher**
-- **Theory:**
-  - Orientation & expectations
-  - C syntax, data types, operators, control structures
-  - Functions, recursion
-  - Arrays & strings
-- **Lab Tasks:**
-  - Basic Syntax & Data Types  
-  - Operators & Expressions  
-  - Control Structures  
-  - Functions  
-  - Arrays & Strings  
-  - File I/O Basics  
-  - Logical Operations  
-  - Enumerations  
-  - Structures (Intro)  
-  - Command Line Arguments  
-
----
-
-### **Day 02: Advanced Topics in C**
-- **Theory:**
-  - Pointers, memory management, structures, File I/O
-  - Compilation process  
-- **Lab Tasks:**
-  - Pointer Basics & Arithmetic  
-  - Pointers with Arrays/Strings  
-  - Preprocessor & File I/O  
-  - Dynamic Memory Allocation  
-  - Linked Lists  
-  - Advanced Challenge Task  
-
----
-
-### **Day 03: Linux Shell Scripting, Makefile, Git**
-- **Theory:**
-  - Shell scripting (structure, variables, control structures, I/O)  
-  - Makefile basics & advanced usage  
-  - Git (basics, branching, merging, stash, tags, ignoring files)  
-- **Lab Tasks:**
-  - Shell Scripting: basics, control structures, functions, arrays, file ops  
-  - Makefile: simple & advanced, project automation  
-  - VS Code setup & extensions  
-  - Git exercises: branching, merging, stash, tags  
-
----
-
-### **Day 04: Introduction to RISC-V ISA & Spike**
-- **Theory:**
-  - RISC-V ISA basics  
-  - RISC-V assembly programming: syntax, registers, memory addressing, arithmetic & control flow instructions  
-  - Toolchain overview (`riscv64-unknown-elf-gcc`)  
-  - Spike simulator introduction  
-- **Lab Tasks:**
-  - Installing Spike and RISC-V toolchain  
-  - Running a basic example on Spike  
-  - Assembly programming exercises  
-
----
-
-## Repository Structure
-
+## 📂 Repository Structure  
 ```
-
-├── Day01\_C\_Basics/
-│   └── <your C programs here>
-├── Day02\_AdvancedC/
-│   └── \<pointer/memory/linked list tasks>
-├── Day03\_Shell\_Make\_Git/
-│   └── \<shell scripts, makefiles, git exercises>
-├── Day05\_RISCV\_Spike/
-│   └── <RISC-V assembly and spike tasks>
+├── Day1 # C Basics
+│   └── day1.c
+├── Day2 # Advanced C (Pointers, Memory, Linked Lists)
+│   └── day2.c
+├── Day3 # Linux Shell, Makefile, Git
+│   ├── .sh # Shell scripts
+│   ├── Makefile
+│   ├── backup / logs # Backup, date logs, archive tasks
+│   └── task5_* # Makefile automation examples
+├── Day5 # RISC-V Labs with Spike
+│   ├── basic_example/ # First assembly + linking example
+│   ├── p1 … p5 # RISC-V assembly + Makefiles
+│   ├── task1 # Restoring division (C + assembly)
+│   ├── task2 # Mixed C + assembly + generated code
+│   └── task3 # Non-restoring division (C + assembly)
+├── LICENSE
 └── README.md
-
 ````
 
 ---
 
-## Submission Guidelines
-1. Fork this repository into your own GitHub account.  
-2. Clone your fork to your local machine.  
-3. Add your solutions inside the relevant **Name_Folder/DayXX_.../** folders.  
-4. Commit with **clear commit messages**.  
-5. Push your work to your fork.  
-6. Submit your work by creating a **Pull Request (PR)** back to this repo.  
+## 📘 Work Completed  
+
+### **Day 1 – C Language Refresher**  
+- Implemented syntax, operators, control structures, functions, arrays, strings, enums, structures, and file I/O basics.  
+
+### **Day 2 – Advanced C**  
+- Completed exercises on pointers, memory allocation, linked lists, preprocessor directives, and file I/O.  
+
+### **Day 3 – Linux Shell, Makefile & Git**  
+- Wrote multiple shell scripts (loops, conditionals, arrays, file ops).  
+- Created Makefiles (simple + advanced project automation).  
+- Practiced Git workflows (branching, merging, stash, tags).  
+- Backup/archive tasks using tar & logs.  
+
+### **Day 5 – RISC-V ISA & Spike**  
+- Installed Spike + RISC-V toolchain.  
+- Compiled and executed assembly programs.  
+- Implemented restoring and non-restoring division algorithms in C and assembly.  
+- Verified outputs with Spike simulator.  
 
 ---
 
+##  Deliverables Checklist  
 
-## Deliverables Checklist
-
-* [ ] All C programs (Day-01, Day-02)
-* [ ] Bash scripts & Makefile tasks (Day-03)
-* [ ] RISC-V assembly programs running on Spike (Day-04)
+- [x] All **C programs** (Day-01 & Day-02)  
+- [x] **Shell scripts & Makefiles** (Day-03)  
+- [x] **RISC-V assembly programs** on Spike (Day-05)  
 
 ---
+
+## 🚀 Notes  
+
+- All work has been **submitted in full**.  
+- Commit history contains clear and descriptive commit messages.  
+- Repository follows the recommended submission structure.  
+
+---
+
+🙌 **Week-01 labs completed successfully and ready for review.**  
+
