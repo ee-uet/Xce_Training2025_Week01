@@ -1,0 +1,6 @@
+Lets print some fruits name 
+Apple
+Bananan
+Pemogranate
+Guava 
+Orange
