@@ -1,0 +1,288 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include <math.h>
+
+/////////////////////////////////////////////////// Task#01 ///////////////////////////////////////////////////////
+void task01_datatypes() {
+    printf("Task 01: Data Types and Sizes\n");
+    printf("size of int is %ld\n", sizeof(int));
+    printf("size of float is %ld\n", sizeof(float));
+    printf("size of double is %ld\n", sizeof(double));
+    printf("size of char is %ld\n\n", sizeof(char));
+}
+
+/////////////////////////////////////////////////// Task#02 ///////////////////////////////////////////////////////
+void arthmatic_operations() {
+    printf("Task 02: Arithmetic Operations\n");
+    int x, y;
+    printf("Enter 1st positive number: ");
+    scanf("%d", &x);
+    printf("Enter 2nd positive number: ");
+    scanf("%d", &y);
+
+    int add = x + y;
+    int sub = x - y;
+    int mul = x * y;
+    double div = (double)x / y;
+    int mod = x % y;
+
+    printf("sum=%d sub=%d mul=%d div=%.2f mod=%d\n\n", add, sub, mul, div, mod);
+}
+
+void switch_operation() {
+    printf("Task 02: Switch Operation\n");
+    int a, b, operation;
+    printf("Enter a: ");
+    scanf("%d", &a);
+    printf("Enter b: ");
+    scanf("%d", &b);
+    printf("Choose operation (0-add, 1-sub, 2-mul, 3-div, 4-mod): ");
+    scanf("%d", &operation);
+
+    switch (operation) {
+        case 0: printf("Sum = %d\n\n", a + b); break;
+        case 1: printf("Subtraction = %d\n\n", a - b); break;
+        case 2: printf("Multiplication = %d\n\n", a * b); break;
+        case 3: printf("Division = %.2f\n\n", (double)a / b); break;
+        case 4: printf("Modulus = %d\n\n", a % b); break;
+        default: printf("Invalid operation\n\n");
+    }
+}
+
+/////////////////////////////////////////////////// Task#03 ///////////////////////////////////////////////////////
+void fibonaci_sequence() {
+    printf("Task 03.1: Fibonacci Sequence\n");
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int a = 0, b = 1, result;
+    printf("%d ", a);
+
+    for (int i = 2; i <= n; i++) {
+        result = a + b;
+        a = b;
+        b = result;
+        printf("%d ", a);
+    }
+    printf("\n\n");
+}
+
+void guessing_game() {
+    printf("Task 03.2: Guessing Game\n");
+    srand(time(0));
+    int random_number = (rand() % 100) + 1;
+    int guess;
+    printf("Guess a number between 1 to 100: ");
+    scanf("%d", &guess);
+
+    if (random_number > guess)
+        printf("YOU FAIL! Your guess is less than the random number (%d)\n\n", random_number);
+    else if (random_number < guess)
+        printf("YOU FAIL! Your guess is greater than the random number (%d)\n\n", random_number);
+    else
+        printf("Congratulations! Your guess matches the random number\n\n");
+}
+
+/////////////////////////////////////////////////// Task#04 ///////////////////////////////////////////////////////
+void Is_prime() {
+    printf("Task 04.1: Check Prime\n");
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n <= 1) {
+        printf("Not a prime number\n\n");
+        return;
+    }
+
+    int isprime = 1;
+    for (int i = 2; i <= n / 2; i++) {
+        if (n % i == 0) {
+            isprime = 0;
+            break;
+        }
+    }
+    if (isprime)
+        printf("Yes, it's a prime number\n\n");
+    else
+        printf("Not a prime number\n\n");
+}
+
+void prime_numbers() {
+    printf("Task 04.2: Prime Numbers up to 100\n");
+    for (int i = 2; i <= 100; i++) {
+        int isprime = 1;
+        for (int j = 2; j * j <= i; j++) {
+            if (i % j == 0) {
+                isprime = 0;
+                break;
+            }
+        }
+        if (isprime) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n\n");
+}
+
+int fictorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * fictorial(n - 1);
+}
+
+/////////////////////////////////////////////////// Task#05 ///////////////////////////////////////////////////////
+void reverse_string() {
+    printf("Task 05.1: Reverse String\n");
+    char arr[] = "Hello";
+    int i = strlen(arr) - 1;
+    while (i >= 0) {
+        printf("%c", arr[i]);
+        i--;
+    }
+    printf("\n\n");
+}
+
+void second_highest() {
+    printf("Task 05.2: Second Highest Element\n");
+    int arr[] = {1, 2, 3, 4, 5};
+    int first = arr[0], second = -1;
+    for (int i = 1; i < 5; i++) {
+        if (arr[i] > first) {
+            second = first;
+            first = arr[i];
+        } else if (arr[i] > second && arr[i] < first) {
+            second = arr[i];
+        }
+    }
+    printf("Second highest is %d\n\n", second);
+}
+
+/////////////////////////////////////////////////// Task#06 ///////////////////////////////////////////////////////
+void file_system() {
+    printf("Task 06: File System\n");
+    int number[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    FILE *ptr = fopen("numbers.txt", "w");
+    for (int i = 0; i < 10; i++) {
+        fprintf(ptr, "%d\n", number[i]);
+    }
+    fclose(ptr);
+
+    FILE *ptr1 = fopen("numbers.txt", "r");
+    int n[50];
+    for (int i = 0; i < 10; i++) {
+        fscanf(ptr1, "%d", &n[i]);
+        printf("%d ", n[i]);
+    }
+    fclose(ptr1);
+    printf("\n\n");
+}
+
+/////////////////////////////////////////////////// Task#07 ///////////////////////////////////////////////////////
+void bitwise_operations() {
+    printf("Task 07.1: Bitwise Operations\n");
+    int x, y;
+    printf("Enter x: ");
+    scanf("%d", &x);
+    printf("Enter y: ");
+    scanf("%d", &y);
+
+    printf("AND = %d\n", x & y);
+    printf("OR = %d\n", x | y);
+    printf("XOR = %d\n", x ^ y);
+    printf("Shift Left = %d\n", x << y);
+    printf("Shift Right = %d\n\n", x >> y);
+}
+
+void ispower_of2() {
+    printf("Task 07.2: Power of 2 Check\n");
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if ((n > 0) && ((n & (n - 1)) == 0)) {
+        printf("Yes, %d is the power of 2\n\n", n);
+    } else {
+        printf("No, %d is not the power of 2\n\n", n);
+    }
+}
+
+/////////////////////////////////////////////////// Task#08 ///////////////////////////////////////////////////////
+void enumeration() {
+    printf("Task 08: Enumeration\n");
+    enum WEEKDAYS {MON = 1, TUE, WED, THR, FRI, SAT, SUN};
+    int number;
+    printf("Enter a number (1-7): ");
+    scanf("%d", &number);
+
+    switch ((enum WEEKDAYS)number) {
+        case MON: printf("MONDAY\n\n"); break;
+        case TUE: printf("TUESDAY\n\n"); break;
+        case WED: printf("WEDNESDAY\n\n"); break;
+        case THR: printf("THURSDAY\n\n"); break;
+        case FRI: printf("FRIDAY\n\n"); break;
+        case SAT: printf("SATURDAY\n\n"); break;
+        case SUN: printf("SUNDAY\n\n"); break;
+        default: printf("NOT A VALID DAY\n\n");
+    }
+}
+
+/////////////////////////////////////////////////// Task#09 ///////////////////////////////////////////////////////
+void structures() {
+    printf("Task 09.1: Distance between two points\n");
+    struct point {
+        int x;
+        int y;
+    } p1, p2;
+
+    printf("Enter values of x1 y1 x2 y2: ");
+    scanf("%d %d %d %d", &p1.x, &p1.y, &p2.x, &p2.y);
+
+    double distance = sqrt(pow((p2.x - p1.x), 2) + pow((p2.y - p1.y), 2));
+    printf("Distance = %.2lf\n\n", distance);
+}
+
+void power_of_two() {
+    printf("Task 09.2: Power of 2 using structure\n");
+    struct num {
+        int number;
+    } n;
+
+    printf("Enter a number: ");
+    scanf("%d", &n.number);
+
+    if ((n.number > 0) && ((n.number & (n.number - 1)) == 0)) {
+        printf("Yes, %d is power of 2\n\n", n.number);
+    } else {
+        printf("No, %d is not the power of 2\n\n", n.number);
+    }
+}
+
+/////////////////////////////////////////////////// Main //////////////////////////////////////////////////////////
+int main() {
+    task01_datatypes();
+    switch_operation();
+    arthmatic_operations();
+    fibonaci_sequence();
+    guessing_game();
+    Is_prime();
+    prime_numbers();
+
+    int n = 5;
+    printf("Factorial of %d is: %d\n\n", n, fictorial(n));
+
+    reverse_string();
+    second_highest();
+    file_system();
+    bitwise_operations();
+    ispower_of2();
+    enumeration();
+    structures();
+    power_of_two();
+
+    return 0;
+}
