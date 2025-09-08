@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/aziz/Documents/xceleroum_training/Xce_Training2025_Week01'
+make: Leaving directory '/home/aziz/Documents/xceleroum_training/Xce_Training2025_Week01'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
