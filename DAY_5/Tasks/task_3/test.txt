@@ -1,0 +1,7 @@
+Dividend: 50, Divisor: 7
+
+result:
+
+Quotient = 7
+
+Remainder = 1

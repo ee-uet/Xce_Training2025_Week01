@@ -1,0 +1,11 @@
+test case 
+
+Initial number: 0x00000002
+
+Bit position: 5
+
+Assembly Result:
+
+After set: 0x00000022
+
+After clear: 0x00000002

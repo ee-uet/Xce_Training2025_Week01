@@ -1,0 +1,13 @@
+test case 
+
+$ ./guess_game.sh
+Guess a number between 1 and 10:
+Enter guess number: 
+5
+Your guess is higher
+Enter guess number: 
+2
+Your guess is lower
+Enter guess number: 
+3
+Your guess is right

@@ -1,0 +1,22 @@
+Test Cases
+Case 1: Swap a = 5, b = 10
+
+Expected Output:
+
+Before swap
+int_1: 5
+int_2: 10
+After swap
+int_1: 10
+int_2: 5
+
+Case 2: Swap a = -3, b = 7
+
+Expected Output:
+
+Before swap
+int_1: -3
+int_2: 7
+After swap
+int_1: 7
+int_2: -3

@@ -1,0 +1,8 @@
+Test Cases
+Case 1: Default execution
+
+Expected Output:
+
+Direct: 10
+Using pointer: 10
+Modified value using pointer: 20

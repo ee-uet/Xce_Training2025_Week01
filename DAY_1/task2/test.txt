@@ -1,0 +1,21 @@
+## Test Cases
+
+Normal addition
+Input: a = 10, b = 5, operator = +
+Expected: Result of 10 + 5 = 15
+
+Division with non-zero divisor
+Input: a = 20, b = 4, operator = /
+Expected: Result of 20 / 4 = 5
+
+Division by zero
+Input: a = 8, b = 0, operator = /
+Expected: Division by zero is not allowed
+
+Modulo with non-zero divisor
+Input: a = 9, b = 2, operator = %
+Expected: Result of 9 % 2 = 1
+
+Invalid operator
+Input: a = 6, b = 3, operator = ^
+Expected: Invalid Operator!

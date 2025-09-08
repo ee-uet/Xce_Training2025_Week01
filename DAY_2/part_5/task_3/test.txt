@@ -1,0 +1,7 @@
+Test Cases
+
+Case 1: Free only one of the allocated pointers → detector reports the unfreed one.
+
+Case 2: Free all allocated pointers → detector prints "No memory leaks detected".
+
+Case 3: Try freeing a pointer not allocated with my_malloc → detector prints warning.
