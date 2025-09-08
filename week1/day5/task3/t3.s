@@ -1,66 +1,84 @@
-.section .text
 .global _start
+.section .text
 
 _start:
-    li a0, 14          # dividend
-    li a1, 3           # divisor
+    li t0, 21           # Dividend value (Q)
+    li t1, 3            # Divisor value (M)
+    li t2, 0            # Remainder accumulator (A)
+    li a2, 32           # Bit processing counter
+    
+    # Create sign detection masks
+    li t6, 1
+    slli t6, t6, 31     # 32-bit sign mask (bit 31)
+    li s0, 1
+    slli s0, s0, 63     # 64-bit sign mask (bit 63)
 
-    call non_restoring_division
+division_iteration:
+    blez a2, finish_division
 
-non_restoring_division:
-    mv t1, a0          # Q = dividend
-    mv t2, a1          # M = divisor
-    li t0, 0           # A = 0 (accumulator)
-    li t3, 32          # n = 32 (loop counter)
+    # Determine current remainder sign
+    and a0, t2, t6      # Check MSB of A (32-bit sign)
 
-div_loop:
-    sll t0, t0, 1      # A <<= 1
-    srl t4, t1, 31     # t4 = MSB of Q
-    or t0, t0, t4      # A |= (Q >> 31)
+    # Construct 64-bit AQ value and shift left
+    slli t3, t2, 32     # Move A to upper 32 bits
+    or t3, t3, t0       # Combine with Q in lower bits
+    slli t3, t3, 1      # Shift entire AQ left by 1
+    
+    slli t4, t1, 32     # Shift M to upper 32 bits
 
-    srai t4, t0, 31    # t4 = sign bit of A (arithmetic)
-    beqz t4, a_pos     # if A >= 0 jump to a_pos (A = A - M)
-                      # else fall-through to add M
+    # Branch based on current remainder sign
+    bnez a0, negative_remainder
 
-    add t0, t0, t2     # A = A + M   (A was negative)
+    # Positive remainder case: subtract divisor
+    sub t5, t3, t4      # (AQ << 1) - (M << 32)
+    j determine_quotient_bit
 
-    j update_q
+negative_remainder:
+    # Negative remainder case: add divisor
+    add t5, t3, t4      # (AQ << 1) + (M << 32)
 
-a_pos:
-    sub t0, t0, t2     # A = A - M   (A was non-negative)
+determine_quotient_bit:
+    # Check sign of new 64-bit result to set quotient bit
+    and a0, t5, s0      # Examine MSB of 64-bit result
+    beqz a0, set_quotient_one  
 
-update_q:
-    sll t1, t1, 1      # Q <<= 1
+    # Negative result: Q0 remains 0 
+    j extract_registers
 
-    srai t4, t0, 31    # sign(A)
-    beqz t4, set_q_bit # if A >= 0 set Q LSB = 1
-    j next
+set_quotient_one:
+    # set LSB to 1
+    ori t5, t5, 1
 
-set_q_bit:
-    ori t1, t1, 1      # Q |= 1
+extract_registers:
+    # Update remainder from upper 32 bits
+    srli t2, t5, 32     # New A value
+    
+    # Update quotient from lower 32 bits
+    slli t0, t5, 32     # Clear upper bits
+    srli t0, t0, 32     # New Q value
 
-next:
-    addi t3, t3, -1    # n--
-    bnez t3, div_loop  # loop if n != 0
+    # Continue with next bit
+    addi a2, a2, -1
+    j division_iteration
 
-    # After loop, if A < 0 adjust remainder: A = A + M
-    srai t4, t0, 31
-    beqz t4, done
-    add t0, t0, t2
+finish_division:
+    and a0, t2, t6      # Check final remainder sign
+    beqz a0, division_complete
+    
+    # Negative remainder correction: add divisor back
+    add t2, t2, t1
 
-done:
-    mv a0, t1          # a0 = quotient
-    mv a1, t0          # a1 = remainder
+division_complete:
+   
+    li a0, 1
+    la a1, tohost
+    sd a0, (a1)
 
- 
-    li t0, 1
-    la t1, tohost
-    sd t0, 0(t1)
-
-1:  j 1b
+   
+termination_loop:
+    j termination_loop
 
 .section .tohost
 .align 3
-tohost:    .dword 0
-fromhost:  .dword 0
-
+tohost: .dword 0
+fromhost: .dword 0

@@ -1,58 +1,49 @@
-.globl _start
-.section .data
-array:
-    .word 5, 3, 4, 1, 2         # initial unsorted array
+.data
+array:  .word 5, 3, 4, 1, 2    # Array to be sorted
+size:   .word 5                 # Number of elements in array
 
+.global _start
+ 
 .section .text
 _start:
-    la t0, array                # base address of array
-    li t2, 5                    # array length = 5
-    li t1, 1                    # outer loop index i = 1 (insertion sort starts from 2nd element)
+    # Initialize array pointer and size
+    la a0, array                # Load address of array into a0
+    la t0, size                 # Load address of size variable
+    lw a1, 0(t0)                # Load actual size value into a1
 
+    addi t1, a0, 4              # t1 = address of 2nd element (current element pointer)
+    addi t2, a1, -1             # t2 = outer loop counter (size - 1)
 
 outer_loop:
-    bge t1, t2, done            # if i >= n → sorting done
+    beqz t2, finish             # If outer loop counter == 0, sorting is done
 
-    # key = arr[i]
-    slli s1, t1, 2              # offset = i * 4
-    add s2, t0, s1              # arr[i] address
-    lw t3, 0(s2)                # key = arr[i]
-
-    addi t4, t1, -1             # j = i - 1
-
+    lw t3, 0(t1)                # t3 = current element value to be inserted
+    mv t4, t1                   # t4 = current position pointer 
 
 inner_loop:
-    blt t4, zero, insert_key     # if j < 0 → break
-    slli s3, t4, 2              # offset = j * 4
-    add s4, t0, s3              # arr[j] address
-    lw t5, 0(s4)                # load arr[j]
+    beq t4, a0, insert          # If we reached start of array, insert element
+    addi t5, t4, -4             # t5 = address of previous element
+    lw t6, 0(t5)                # t6 = value of previous element
+    ble t6, t3, insert          # If previous element <= current, found insertion point
+    sw t6, 0(t4)                # Shift previous element to current position
+    mv t4, t5                   # Move current pointer backward
+    j inner_loop                # Continue inner loop
 
-    ble t5, t3, insert_key      # if arr[j] <= key → stop shifting
+insert:
+    sw t3, 0(t4)                # Insert current element at correct position
+    addi t1, t1, 4              # Move to next element in array
+    addi t2, t2, -1             # Decrement outer loop counter
+    j outer_loop                
 
-    sw t5, 4(s4)                # arr[j+1] = arr[j] (shift element right)
-    addi t4, t4, -1             # j--
-    j inner_loop                # repeat
-
-
-insert_key:
-    slli s3, t4, 2              # offset = j * 4
-    add s4, t0, s3              # arr[j] address
-    sw t3, 4(s4)                # arr[j+1] = key
-
-    addi t1, t1, 1              # i++
-    j outer_loop                # next iteration
-
-
-done:
+finish:
    
-    li t0, 1
-    la t1, tohost
-    sd t0, 0(t1)
+    li t0, 1                    
+    la t1, tohost               
+    sd t0, (t1)                
 
-1:  j 1b                        
+1:  j 1b                 
 
 .section .tohost
 .align 3
-tohost:   .dword 0
-fromhost: .dword 0
-
+tohost: .dword 0               
+fromhost: .dword 0             
