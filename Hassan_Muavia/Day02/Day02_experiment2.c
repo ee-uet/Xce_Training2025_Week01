@@ -2,20 +2,23 @@
 #include <string.h>
 #include<stdlib.h>
 
+//task 1
 void task1_1() {
     // TODO: Declare int variable, pointer to it
     // Print value using direct and pointer
     // Modify via pointer and print new value
     int a = 4;
-    int *p = &a;
+    int *p = &a;                        // p holds address of a
 
-    printf("direct value: %d\n",a);
+    printf("direct value: %d\n",a);     
     printf("using pointer: %d\n",*p);
 
-    *p = 6;
+    *p = 6;                             // changing value of a using pointer
     printf("new value: %d\n",a);
 }
 
+
+// swaping two intergers using pointers
 void swap(int *a, int *b) {
     // TODO: Implement swap using pointers
     
@@ -24,9 +27,10 @@ void swap(int *a, int *b) {
     *b = temp;
 
     printf("a = %d\n",*a);
-    printf("b = %d\n",temp);
+    printf("b = %d\n",*b);
 }
 
+// task 3
 void task1_3() {
     // TODO: Create an array
     // Print all elements using pointers
@@ -39,54 +43,76 @@ void task1_3() {
     printf("elements are: ");
     while (*ptr!='\0'){
         printf("%d ",*ptr);
-        sum = sum + (*ptr);
-        ptr++;
+        sum = sum + (*ptr);         // sum of elements
+        ptr++;                      // moving to next element
         
     }
     printf("\nsum is %d",sum);
+
+    // reversing array
+    int n = sizeof(arr)/sizeof(arr[0]);
+    for (int i = 0; i < n / 2; i++) {
+        int temp = arr[i];
+        arr[i] = arr[n - i - 1];
+        arr[n - i - 1] = temp;
+    }
+    printf("reversed array is: ");
+    for (int j = 0; j < n; j++) {
+        printf("%d ", arr[j]);          // elements of reversed array
+    }
     
 }
+
 
 // Custom strlen using pointers
 int my_strlen(const char *s) {
     // TODO: Implement strlen
     int length = 0;
     while (*s!='\0'){
-        length += 1;
-        s++;
+        length += 1;            // increment length
+        s++;                    // move to next character
     }
     printf("length is: %d",length);
     return 0;
 }
 
+
 // Custom strcpy using pointers
 void my_strcpy(char *dest, const char *src) {
-    char *p = dest;
+
+    // TODO: Implement strcpy
+    char *p = dest;                                 // p has starting address of dest
     while(*src!='\0'){
-        *dest = *src;
-        src++;
-        dest++;
+        *dest = *src;                               // copying character from src to dest
+        src++;                                      // moving to next character
+        dest++;                                     // moving to next position in dest   
     }
     
     printf("copied string is %s",p);
-    // TODO: Implement strcpy
+    
 }
+
 
 // Custom strcmp using pointers
 int my_strcmp(const char *s1, const char *s2) {
+
     // TODO: Implement strcmp
     while (*s1 != '\0' && *s2 != '\0') {
-        if (*s1 != *s2) {
-            printf("%d ", (int)(*s1) - (int)(*s2));
+        if (*s1 != *s2) {                           // comparing characters of both strings
+            return printf("different strings");
         }
         s1++;
         s2++;
     }
-    printf("%d ", (int)(*s1) - (int)(*s2));}
+    printf("same strings");
+}
 
+
+// Check palindrome using pointers
 int is_palindrome(const char *s) {
+
     // TODO: Implement palindrome check
-    const char *end = s + strlen(s)-1;
+    const char *end = s + strlen(s)-1;          // s has starting address and end has last character address
     while(s<end){
         if (*s==*end){
             s++;
@@ -100,6 +126,10 @@ int is_palindrome(const char *s) {
 
     return 0;
 }
+
+
+// ======================= Part 3: Macros and File I/O =======================
+
 #define SQUARE(x)      x*x // TODO: Define macro, delete this comment after defining
 #define MAX2(a,b)      (a>b)?a:b // TODO: Define macro, delete this comment after defining
 #define MAX3(a,b,c)     ((a>b && a>c)?a:(b>c ? b:c))// TODO: Define macro, delete this comment after defining
@@ -115,6 +145,7 @@ void task3_1_macros() {
     printf("greatest of four number is: %d\n",MAX4(4,3,7,5));
     printf("upper case is: %c\n",n);
 }
+
 
 // Student struct
 struct Student {
@@ -150,12 +181,12 @@ void task3_2_fileio() {
     }
     FILE *file;
 
-    file = fopen("student.txt","w");
+    file = fopen("student.txt","w");          // write the data in student.txt file
     if(file==NULL){
         printf("there is an error");
         return ;
     }
-    fprintf(file,"%s %d %f",s1.name,s1.roll,s1.gpa);
+    fprintf(file,"%s %d %f",s1.name,s1.roll,s1.gpa);     // writing data of 1st student
     fprintf(file,"%s %d %f",s2.name,s2.roll,s2.gpa);
     fprintf(file,"%s %d %f",s3.name,s3.roll,s3.gpa);
     fprintf(file,"%s %d %f",s4.name,s4.roll,s4.gpa);
@@ -164,14 +195,14 @@ void task3_2_fileio() {
     fclose(file);
 
     struct Student temp;
-    file = fopen("student.txt","r");
+    file = fopen("student.txt","r");                     // read the data from student.txt file
     if(file==NULL){
         printf("Error opening file for reading\n");
         return;
     }
 
     printf("\nReading data back from file:\n");
-    while(fscanf(file,"%s %d %f", temp.name, &temp.roll, &temp.gpa) == 3){
+    while(fscanf(file,"%s %d %f", temp.name, &temp.roll, &temp.gpa) == 3){         // reading one line from file
         printf("Name: %s, Roll: %d, GPA: %.2f\n", temp.name, temp.roll, temp.gpa);
     }
 
@@ -180,13 +211,16 @@ void task3_2_fileio() {
     
 }
 
+
+// ======================= Part 4: Linked Lists =======================
 struct Node {
     int data;
     struct Node *next;
 };
-
+// Insert at beginning
 struct Node* insert_begin(struct Node *head, int value) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));      // creating new node
     if (newNode == NULL) {
         printf("Memory allocation failed\n");
         return head;
@@ -196,7 +230,7 @@ struct Node* insert_begin(struct Node *head, int value) {
     head = newNode;
     return head;
 }
-
+// Delete by value
 struct Node* delete_value(struct Node *head, int value) {
     struct Node *temp = head, *prev = NULL;
 
@@ -205,16 +239,16 @@ struct Node* delete_value(struct Node *head, int value) {
         return head;
     }
 
-    if (head->data == value) {
-        temp = head;
-        head = head->next;
-        free(temp);
+    if (head->data == value) {              // searching for value to be deleted
+        temp = head;                        // node to be deleted
+        head = head->next;                  // head will point to next node
+        free(temp);                         // free memory
         return head;
     }
 
-    while (temp != NULL && temp->data != value) {
-        prev = temp;
-        temp = temp->next;
+    while (temp != NULL && temp->data != value) {       // traversing for the value to be deleted
+        prev = temp;                                    // temp would become previous node
+        temp = temp->next;                              // temp would become next node
     }
 
     if (temp == NULL) {
@@ -222,14 +256,15 @@ struct Node* delete_value(struct Node *head, int value) {
         return head;
     }
 
-    prev->next = temp->next;
+    prev->next = temp->next;                            
     free(temp);
 
     return head;
 }
 
+// Print list
 void print_list(struct Node *head) {
-    struct Node *temp = head;
+    struct Node *temp = head;               // temp will traverse the list and head will point to starting node to remember the starting point
     while (temp != NULL) {
         printf("%d -> ", temp->data);
         temp = temp->next;
@@ -273,8 +308,8 @@ void task5_1_dynamic_array() {
     float avg;
 
     printf("Enter the size of the array: ");
-    scanf("%d", &size);
-    arr = (int *)malloc(size * sizeof(int));
+    scanf("%d", &size);                            // taking size of array from user
+    arr = (int *)malloc(size * sizeof(int));       // allocating memory using malloc
     
     if (arr == NULL) {
         printf("Memory allocation failed.\n");
@@ -298,6 +333,7 @@ void task5_1_dynamic_array() {
 
 }
 
+
 // Task 5.2: Extend array with realloc
 void task5_2_realloc_array() {
     // TODO: realloc to extend existing array
@@ -307,6 +343,7 @@ void task5_2_realloc_array() {
     scanf("%d",&newsize);
     arr = (int *)realloc(arr,newsize*sizeof(int));
 }
+
 
 // Memory Leak Detector (simplified tracking)
 #define MAX_PTRS 100
@@ -319,7 +356,7 @@ void* my_malloc(size_t size) {
         printf("allocations are more than required");
         return NULL;
     }
-    void* ptr = malloc(size);
+    void* ptr = malloc(size);                           // creating memory of size
     if (ptr != NULL) {
         allocated_ptrs[allocated_count++] = ptr;
     }
@@ -434,7 +471,7 @@ int main(){
     const char sarr[] = "copied string";
     const char a[] = "dog";
     const char b[] = "dog";
-    const char d[] = "alla";
+    const char d[] = "allah";
     //task1_1();
     //swap(&x,&y);
     //task1_3();
@@ -446,9 +483,9 @@ int main(){
     //task3_2_fileio();
     //task4_1_linkedlist();
     
-   // task5_1_dynamic_array();
+    task5_1_dynamic_array();
     //task5_2_realloc_array();
     //task5_3_leak_detector();
-    test_booth();
+    //test_booth();
     return 0;
 }
