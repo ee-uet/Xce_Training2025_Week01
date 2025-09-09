@@ -2,11 +2,11 @@
 
 This directory contains my **Day 1 experiments in C programming**, covering basics like data types, operators, control structures, recursion, file handling, bitwise operations, enums, structs, and command-line arguments.  
 
-## 📂 Contents  
+## Contents  
 
 All tasks are implemented in a **single C file**. You can comment/uncomment function calls in `main()` to run a specific task.  
 
-### 📝 Implemented Tasks  
+### Implemented Tasks  
 
 1. **Data Types & Type Casting** – Print sizes of types and demonstrate type casting.  
 2. **Calculator** – Basic calculator using `switch-case`.  
@@ -25,9 +25,9 @@ All tasks are implemented in a **single C file**. You can comment/uncomment func
 
 ---
 
-## ⚙️ How to Compile and Run  
+##  How to Compile and Run  
 
 ### Compile
 ```bash
 gcc Day01_experiment1.c -o day1
-
+./day1 5 7
