@@ -1,0 +1,52 @@
+
+CC = gcc
+CFLAGS = -Wall -g
+DEBUG_CFLAGS = -Wall -g -DDEBUG -O0
+
+SOURCES = main.c functions.c sum.c sub.c
+OBJS = main.o functions.o sum.o sub.o
+TARGET = program
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+ 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+debug: clean-debug $(TARGET)-debug
+
+$(TARGET)-debug: main-debug.o functions-debug.o sum-debug.o sub-debug.o
+	$(CC) $(DEBUG_CFLAGS) -o $(TARGET) main-debug.o functions-debug.o sum-debug.o sub-debug.o
+
+main.o: main.c main.h functions.h
+	$(CC) $(CFLAGS) -c main.c
+
+functions.o: functions.c functions.h sum.h
+	$(CC) $(CFLAGS) -c functions.c
+
+sum.o: sum.c sum.h
+	$(CC) $(CFLAGS) -c sum.c
+
+sub.o: sub.c sub.h functions.h
+	$(CC) $(CFLAGS) -c sub.c
+
+main-debug.o: main.c main.h functions.h
+	$(CC) $(DEBUG_CFLAGS) -c main.c -o main-debug.o
+
+functions-debug.o: functions.c functions.h sum.h
+	$(CC) $(DEBUG_CFLAGS) -c functions.c -o functions-debug.o
+
+sum-debug.o: sum.c sum.h
+	$(CC) $(DEBUG_CFLAGS) -c sum.c -o sum-debug.o
+
+sub-debug.o: sub.c sub.h functions.h
+	$(CC) $(DEBUG_CFLAGS) -c sub.c -o sub-debug.o
+
+clean:
+	rm -f $(OBJS) $(TARGET)
+
+clean-debug:
+	rm -f main-debug.o functions-debug.o sum-debug.o sub-debug.o
+
+
+clean-all:
+	rm -f $(OBJS) $(TARGET) main-debug.o functions-debug.o sum-debug.o sub-debug.o

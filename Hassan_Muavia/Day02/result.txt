@@ -1,0 +1,43 @@
+PS D:\xcelerium_training> gcc Lab_experiment2.c -o Lab_experiment2
+PS D:\xcelerium_training> ./Lab_experiment2 3 4 
+direct value: 4
+using pointer: 4
+new value: 6
+a = 6
+b = 4
+elements are: 2 3 6 40 -2044862554 444 
+sum is -2044862059reversed array is: 6 3 2 length is: 8copied string is copied stringsame stringsnot palindromegreater number is: 5
+greater of three number is: 9
+greatest of four number is: 7
+upper case is: D
+hassan has highest gpa
+Reading data back from file:
+Name: asad, Roll: 169, GPA: 3.40
+Name: haseeb, Roll: 166, GPA: 3.30
+Name: hassan, Roll: 162, GPA: 3.62
+Name: ali, Roll: 161, GPA: 3.50
+Name: ahmad, Roll: 163, GPA: 3.60
+Linked List after insertion:
+40 -> 30 -> 20 -> 10 -> NULL
+After deleting 30:
+40 -> 20 -> 10 -> NULL
+After trying to delete 20:
+40 -> 10 -> NULL
+After deleting 40 (head):
+10 -> NULL
+Enter the size of the array: 3 
+Enter 3 integers:
+Element 1: 2 
+Element 2: 5
+Element 3: 4
+sum is 11
+avg is 3.666667give new size: 6
+a = 10, b = 20, c = 30
+Memory leaks detected! Unfreed pointers: 2
+ - Leak at pointer 000001BC861D9B10
+ - Leak at pointer 000001BC861D9B50
+ 3 *  4 = 12
+-3 *  4 = -12
+ 3 * -4 = -12
+-3 * -4 = 12
+ 0 *  7 = 0
