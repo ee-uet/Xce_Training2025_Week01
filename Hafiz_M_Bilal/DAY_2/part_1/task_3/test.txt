@@ -1,0 +1,16 @@
+Test Cases
+Case 1: Predefined array {1, 2, 3, 4, 5}
+
+Expected Output:
+
+Array elements are: 1 2 3 4 5 
+The Sum is: 15
+Reverse array elements are: 5 4 3 2 1 
+
+Case 2: Modify array to {10, 20, 30}
+
+Expected Output:
+
+Array elements are: 10 20 30 
+The Sum is: 60
+Reverse array elements are: 30 20 10 

@@ -1,0 +1,24 @@
+Test Cases
+Case 1: my_strlen("Hello")
+
+Expected:
+
+Len = 5
+
+Case 2: my_strcpy(buf, "World")
+
+Expected:
+
+Copied: World
+
+Case 3: my_strcmp("world", "world")
+
+Expected:
+
+Strings are equal
+
+Case 4: my_strcmp("apple", "banana")
+
+Expected:
+
+Strings are not_equal

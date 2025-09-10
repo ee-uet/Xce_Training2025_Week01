@@ -1,0 +1,12 @@
+test case 
+
+Fruits in array: 
+apple
+banana
+orange
+-----------------------
+Fruits in array: 
+apple
+banana
+orange
+pineapple

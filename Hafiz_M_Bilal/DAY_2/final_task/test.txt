@@ -1,0 +1,10 @@
+test cases 
+ 5 *  3 = 15 (expected 15)
+-5 *  3 = -15 (expected -15)
+ 5 * -3 = -15 (expected -15)
+-5 * -3 = 15 (expected 15)
+ 0 *  7 = 0 (expected 0)
+ -7 *  0 = 0 (expected 0)
+ 1 * 123 = 123 (expected 123)
+INT_MAX * 1 = 2147483647 (expected 2147483647)
+INT_MIN * 1 = -2147483648 (expected -2147483648)

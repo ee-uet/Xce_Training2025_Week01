@@ -1,0 +1,13 @@
+## Test Cases
+
+Default values
+Input: i = 42, f = 3.14, d = 1.23456, c = 'A'
+Expected: Correct values printed with sizes and type casting results.
+
+Change values
+Input: i = 100, f = 7.77, d = 123.456, c = 'z'
+Expected: Values and sizes updated accordingly, type casting shows truncated results for float/double to int.
+
+Edge case with char
+Input: c = 127 (max value for signed char)
+Expected: Printing as integer should show 127.

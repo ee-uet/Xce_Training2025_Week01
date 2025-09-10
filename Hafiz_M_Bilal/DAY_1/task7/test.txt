@@ -1,0 +1,43 @@
+Test Cases
+Case 1: Bitwise operations
+
+Input: 
+
+x = 5, y = 9
+
+
+Output:
+
+x = 5, y = 9
+x & y = 1
+x | y = 13
+x ^ y = 12
+~x = -6
+~y = -10
+x << 1 = 10
+y << 1 = 18
+x >> 1 = 2
+y >> 1 = 4
+
+------------------------------------------------------------
+
+Case 2: Power of 2 check
+
+Input:
+
+Enter a number to check if it is power of 2: 16
+
+
+Output:
+
+16 is a power of 2
+
+
+Input:
+
+Enter a number to check if it is power of 2: 18
+
+
+Output:
+
+18 is NOT a power of 2

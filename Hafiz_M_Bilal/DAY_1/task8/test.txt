@@ -1,0 +1,41 @@
+Test Cases
+Case 1: Valid input
+
+Input:
+
+Enter a number (1-7): 3
+
+
+Output:
+
+Wednesday
+
+Case 2: Valid input
+
+Input:
+
+Enter a number (1-7): 7
+
+
+Output:
+
+Sunday
+
+Case 3: Invalid input
+
+Input:
+
+Enter a number (1-7): 10
+
+
+Output:
+
+Invalid input! Please enter 1–7.
+
+Input:
+
+Enter a number (1-7): Thursday
+
+Output:
+
+Invalid input! Please enter 1–7.
