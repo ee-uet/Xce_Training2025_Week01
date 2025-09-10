@@ -1,0 +1,15 @@
+Name: hamza
+Roll no: 16
+GPA: 3.1
+Name: ali
+Roll no: 15
+GPA: 3.5
+Name: ahsan
+Roll no: 17
+GPA: 3.4
+Name: bilal
+Roll no: 14
+GPA: 3.3
+Name: ahmad
+Roll no: 24
+GPA: 3.2
