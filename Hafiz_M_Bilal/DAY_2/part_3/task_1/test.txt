@@ -1,0 +1,36 @@
+Test Cases
+Case 1: Square
+
+Input: x = 5
+Output:
+
+SQUARE(5) = 25
+
+Case 2: Maximum of 2
+
+Input: x = 5, y = 10
+Output:
+
+MAX2(5, 10) = 10
+
+Case 3: Maximum of 3
+
+Input: x = 5, y = 10, z = 3
+Output:
+
+MAX3(5, 10, 3) = 10
+
+Case 4: Maximum of 4
+
+Input: x = 5, y = 10, z = 3, w = 15
+Output:
+
+MAX4(5, 10, 3, 15) = 15
+
+Case 5: Uppercase Conversion
+
+Input: 'a', 'Z'
+Output:
+
+TO_UPPER('a') = A
+TO_UPPER('Z') = Z

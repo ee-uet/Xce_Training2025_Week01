@@ -1,0 +1,30 @@
+Test Cases
+Case 1: "Madam"
+
+Expected Output:
+
+Palindrome? Yes
+
+Case 2: "Racecar"
+
+Expected Output:
+
+Palindrome? Yes
+
+Case 3: "Hello"
+
+Expected Output:
+
+Palindrome? No
+
+Case 4: "12321"
+
+Expected Output:
+
+Palindrome? Yes
+
+Case 5: "asdfgh"
+
+Expected Output:
+
+Palindrome? No

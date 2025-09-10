@@ -1,0 +1,8 @@
+test case 
+
+$ ./evenodd.sh 10
+Number is even
+
+
+$ ./evenodd.sh 7
+Number is Odd

@@ -1,0 +1,36 @@
+Test Cases
+Case 1: Points on axes
+
+Input:
+
+Enter coordinates of first point (x y): 0 0
+Enter coordinates of second point (x y): 3 4
+
+
+Output:
+
+Euclidean Distance = 5.00
+
+Case 2: Negative coordinates
+
+Input:
+
+Enter coordinates of first point (x y): -2 -3
+Enter coordinates of second point (x y): 4 1
+
+
+Output:
+
+Euclidean Distance = 7.21
+
+Case 3: Same point
+
+Input:
+
+Enter coordinates of first point (x y): 5 5
+Enter coordinates of second point (x y): 5 5
+
+
+Output:
+
+Euclidean Distance = 0.00

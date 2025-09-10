@@ -1,0 +1,6 @@
+test case 
+
+make
+make run
+make debug
+make clean

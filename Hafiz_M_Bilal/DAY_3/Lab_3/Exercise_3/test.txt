@@ -1,0 +1,7 @@
+test case 
+
+Enter the name of Country: Pakistan
+The capital of Pakistan is: Islamabad
+
+Enter the name of Country: Germany
+Sorry, this country is not in my array

@@ -1,0 +1,9 @@
+test case 
+
+Dividend = 37
+
+Divisor = 5
+
+Expected Result:
+Quotient = 7
+Remainder = 2

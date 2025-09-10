@@ -1,0 +1,5 @@
+## Test Cases
+
+For input 5:
+
+t0 = 120
