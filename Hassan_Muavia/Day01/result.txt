@@ -1,0 +1,53 @@
+PS D:\xcelerium_training> gcc Lab_experiment1.c -o Lab_experiment1
+PS D:\xcelerium_training> ./Lab_experiment1 4 5   
+size: 4 bytes
+size: 4 bytes
+size: 8 bytes
+size: 1 bytes
+value of m: 7
+value of n: 7.019783Enter the integers: 3 + 4
+sum is: 7Enter the number of terms: 3
+The numbers are:0 1 1 Guess a number between 1 and 100: 2
+Too low! Try again: 3
+Too low! Try again: 4
+Too low! Try again: 5
+Too low! Try again: 6
+Too low! Try again: 7
+Too low! Try again: 8
+Too low! Try again: 9
+Too low! Try again: 0
+Too low! Try again: 1
+Too low! Try again: 12
+Too low! Try again: 40
+Too low! Try again: 50
+Too low! Try again: 67
+Too low! Try again: 89
+Low, but close! Try again: 90
+Low, but close! Try again: 94
+Low, but close! Try again: 95
+Low, but close! Try again: 96
+Low, but close! Try again: 97
+Low, but close! Try again: 98
+ Congratulations! You guessed the number 98 correctly!
+Prime numbers between 1 and 100:
+1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+Second largest = 12
+Enter a string: computer
+Reversed string: retupmoc
+Numbers read from file:
+0
+1
+2
+3
+4
+a&b: 4
+a|b: 7
+a^b: 3
+~a: -8
+a<<1: 14
+a>>1: 3
+Enter the number: 4
+ THURSDAYenter 1st point: 2 3
+enter 2nd point: 4 5
+distance: 2.828427sum is 9number is not power of 2
+PS D:\xcelerium_training>
