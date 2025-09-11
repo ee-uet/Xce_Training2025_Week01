@@ -28,10 +28,15 @@ t4 = 1 (result in t4)
 **TODO**: Count the number of set bits in a 32-bit integer.  
 
 **Working**:  
-- Initializes loop with shifting mask (`t6`).  
-- ANDs each shifted bit with number (`t2=7`).  
-- Increments counter `t5` whenever a bit is set.  
-- Loops until all 31 positions checked.  
+- Loads the input number (t2 = 7)
+
+- Repeatedly applies: t2 = t2 & (t2 - 1)
+
+- This operation clears the lowest set bit in each iteration
+
+- Increments a counter (t5) on each loop — each iteration  corresponds to one set bit.
+
+- Stops when all bits are cleared (t2 == 0)  
 
 **Test Case**: Input `7 (0b111)`.  
 
@@ -46,15 +51,15 @@ t5 = 3 (result in t5)
 **TODO**: Compute factorial of a number.  
 
 **Working**:  
-- Initializes number `t2 = 3`.  
+- Initializes number `t2 = 4`.  
 - Multiplies decreasing sequence until 1.  
 - Stores result in `t5`.  
 
-**Test Case**: Input `3`.  
+**Test Case**: Input `4`.  
 
 **Output**:  
 ```
-t5 = 6 (result in t5)
+t5 = 0x18 = d'24 (result in t5)
 ```
 
 ---
@@ -63,15 +68,15 @@ t5 = 6 (result in t5)
 **TODO**: Reverse the elements of an array in place.  
 
 **Working**:  
-- Loads base address of array `{3,7,2,9,1,5,10}`.  
+- Loads base address of array `{4,6,3,7,1,5,9}`.  
 - Swaps elements from start and end, moving inward.  
 - Uses counter to stop at halfway point.  
 
-**Test Case**: Input `[3,7,2,9,1,5,10]`.  
+**Test Case**: Input `[4,6,3,7,1,5,9]`.  
 
 **Output**:  
 ```
-[10,5,1,9,2,7,3] (reversed array in memory)
+[9,5,1,7,3,6,4] (reversed array in memory)
 ```
 
 ---
@@ -85,11 +90,11 @@ t5 = 6 (result in t5)
 - Shifts larger values right.  
 - Places current element (`key`) at correct sorted position.  
 
-**Test Case**: Input `[3,7,2,9,1,5]`.  
+**Test Case**: Input `[4,8,3,9,1,7]`.  
 
 **Output**:  
 ```
-[1,2,3,5,7,9] (sorted array in memory)
+[1,3,4,7,8,9] (sorted array in memory)
 ```
 
 ---

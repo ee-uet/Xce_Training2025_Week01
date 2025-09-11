@@ -1,43 +1,32 @@
 .global _start
 .section .text
 
+# Program: Count the number of 1's using Kernighan's Algorithm
+
 _start:
-
-    li t2,7     #32-bit word
-    li t3,31
-    li t4,1     #for loop counter
-    li t5,0     #count
-    li t6,1     #temp for shift
-    li a0,0     #temp
-
-    and a0,t6,t2
-    bnez a0,t
-    j loop
-t:
-    addi t5,t5,1
+    li t2, 7         # Load the 32-bit word (7 = 0b000...0111)
+    li t5, 0         # t5 = count = 0
 
 loop:
-    slli t6,t6,1
-    and a0,t6,t2
-    bnez a0,countplus1
-    j label
-countplus1:    
-    addi t5,t5,1
-label:    
-    addi t4,t4,1
-    blt t4,t3,loop
+    beqz t2, exit    # If t2 == 0, we're done
 
+    addi t5, t5, 1   # count++
+
+    addi t3, t2, -1  # t3 = t2 - 1
+    and t2, t2, t3   # t2 = t2 & (t2 - 1) → clears the lowest set bit
+
+    j loop           # Repeat
 
 exit:
-    # Code to exit for Spike (DONT REMOVE IT)
+    # Exit code for Spike simulator (DO NOT REMOVE)
     li t0, 1
     la t1, tohost
     sd t0, (t1)
 
-# Loop forever if spike does not exit
-1: j 1b
+# Infinite loop in case simulator fails to exit
+1:  j 1b
 
 .section .tohost
 .align 3
-tohost: .dword 0
-fromhost: .dword 0
+tohost:     .dword 0
+fromhost:   .dword 0
