@@ -3,6 +3,7 @@
 *_test
 *.o
 *.elf
+*.Zone.Identifier
 
 **/.vscode/
 work
