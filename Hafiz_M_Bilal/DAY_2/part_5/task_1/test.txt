@@ -1,0 +1,13 @@
+teat case 
+
+Input:
+Enter number of elements of an array: 5
+Enter 1th number: 10
+Enter 2th number: 20
+Enter 3th number: 30
+Enter 4th number: 40
+Enter 5th number: 50
+
+Output:
+Sum: 150
+Average: 30.00

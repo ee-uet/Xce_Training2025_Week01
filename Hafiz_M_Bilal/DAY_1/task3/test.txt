@@ -1,0 +1,25 @@
+## Test Cases
+--------Fibonacci--------
+
+Input: n = 5
+Expected: 0 1 1 2 3
+
+Input: n = 1
+Expected: 0
+
+Input: n = 0
+Expected: No sequence printed (edge case).
+
+--------------------------
+
+--------Guessing Game-------
+
+Random = 42, Guess sequence: 10, 70, 42
+Expected:
+
+The guess is too low
+The guess is too high
+You guess the correct number in 3th attempts
+
+Random = 0, Guess = 0
+Expected: Correct guess in 1 attempt.

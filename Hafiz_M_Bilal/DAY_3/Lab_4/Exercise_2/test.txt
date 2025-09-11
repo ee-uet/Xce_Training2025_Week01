@@ -1,0 +1,24 @@
+
+test case 
+If E4_2.log contains:
+
+2025-09-07 Hafiz login
+2025-09-07 Bilal logout
+2025-09-07 Hafiz upload
+2025-09-07 Ali login
+
+
+The output will be:
+
+Total no of entries: 
+4
+
+Unique Usernames: 
+Ali
+Bilal
+Hafiz
+
+Count action per username
+2 Hafiz
+1 Ali
+1 Bilal

@@ -1,0 +1,14 @@
+test case 
+Input:
+Enter number of elements of an array: 3
+Enter 1th number: 10
+Enter 2th number: 20
+Enter 3th number: 30
+Original array: 10 20 30
+Enter number of Extra elements to append in an array: 2
+Enter 4th number: 40
+Enter 5th number: 50
+
+Output:
+Original array: 10 20 30
+Extended array: 10 20 30 40 50

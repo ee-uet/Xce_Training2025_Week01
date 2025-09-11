@@ -1,0 +1,44 @@
+Test Cases
+
+Case 1: Normal Input
+
+Input
+
+1 2 3 4 5
+
+
+Output
+
+Numbers written to numbers.txt
+Numbers read from file:
+1 2 3 4 5
+
+Case 2: Different Numbers
+
+Input
+
+10 20 30 40 50
+
+
+Output
+
+Numbers written to numbers.txt
+Numbers read from file:
+10 20 30 40 50
+
+------------------------------------------------------
+
+For optional task 
+
+Test Cases
+Case 1: Expected Output in File
+
+Program Output
+
+Prime numbers written to primes.txt
+
+
+Contents of primes.txt
+
+Prime numbers between 1 and 100 are:
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97

@@ -1,0 +1,14 @@
+test case 
+
+If E4_1.txt contains:
+
+Hello World
+This is a test
+Line numbering example
+
+
+The output will be:
+
+1 : Hello World
+2 : This is a test
+3 : Line numbering example

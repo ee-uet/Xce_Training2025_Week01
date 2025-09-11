@@ -1,0 +1,33 @@
+est Cases
+Case 1: Positive numbers
+
+Command:
+
+./task10 7 8
+
+
+Output:
+
+Sum = 15
+
+Case 2: Including negative number
+
+Command:
+
+./task10 -5 12
+
+
+Output:
+
+Sum = 7
+
+Case 3: Both negative
+
+Command:
+
+./task10 -4 -9
+
+
+Output:
+
+Sum = -13

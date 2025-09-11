@@ -1,0 +1,5 @@
+test case 
+input node data values (30 20 10)
+
+Print Linked list: 30 20 10 
+Print Linked list after deleting node: 20 10 

@@ -1,0 +1,18 @@
+Test Cases
+
+----------Prime Numbers--------
+
+Expected primes between 1 and 10: 2 3 5 7
+
+Expected primes between 90 and 100: 97
+
+------------Factorial----------------
+
+Input: n = 5
+Expected: 120
+
+Input: n = 10
+Expected: 3628800
+
+Input: n = 1
+Expected: 1
