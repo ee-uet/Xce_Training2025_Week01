@@ -1,6 +1,6 @@
 # Makefile for RISC-V Assembly Exercises
 # Compiler and emulator
-PROG=factorial
+PROG=reverse_array
 AS = riscv64-unknown-elf-as
 LD = riscv64-unknown-elf-ld
 SPIKE = spike

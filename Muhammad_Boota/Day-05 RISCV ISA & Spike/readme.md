@@ -10,6 +10,7 @@ This directory contains RISC-V assembly exercises and a Makefile for building an
 	- `calculator.s` – RISC-V assembly source for calculator
 	- `factorial.s` – RISC-V assembly source for factorial
 	- `set_bit.s` – RISC-V assembly source for bit manipulation
+	- `reverse_array.s` – RISC-V assembly source for reverse_array
 	- `link.ld` – Linker script
 	- `makefile` – Build and run automation
 
